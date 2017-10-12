@@ -1,6 +1,12 @@
-# fiboclockcci
+# FiboClockcci™
 
-> A Vue.js project
+A virtual take on the [Fibonacci Clock](http://geekoclock.com/) using Vue, Vuex and Moment to create a way to tell time that would make Leonardo Bigollo himself beam with pride.
+
+Reading the clock is simple. Add the red and blue squares for hours. Add the green and blue squares and multiply by five to get the minutes.
+
+Time zone features are coming soon as well as styling enhancements.
+
+(https://fiboclockcci.herokuapp.com/#/)
 
 ## Build Setup
 
@@ -17,5 +23,3 @@ npm run build
 # build for production and view the bundle analyzer report
 npm run build --report
 ```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
