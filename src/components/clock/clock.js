@@ -1,21 +1,39 @@
+import TimeZones from './timeZones.vue'
+
 export default {
+  components: {
+    TimeZones
+  },
   data() {
     return {
       b1t: {'isHour': false, 'isMinute': false, 'background-color': ''},
       b1b: {'isHour': false, 'isMinute': false, 'background-color': ''},
       b2: {'isHour': false, 'isMinute': false, 'background-color': ''},
       b3: {'isHour': false, 'isMinute': false, 'background-color': ''},
-      b5: {'isHour': false, 'isMinute': false, 'background-color': ''}
+      b5: {'isHour': false, 'isMinute': false, 'background-color': ''},
+      zone: null
     }
   },
   beforeMount() {
-    setInterval(() => { this.clockWorks(this.$store.getters.hour,this.$store.getters.minute) }, 500)
+        var h = this.$store.getters.hour
+        var m = this.$store.getters.minute
+        this.clockWorks(h,m)
   },
   mounted() {
     // begins the start action in the store
     this.$store.dispatch('start')
     this.$store.dispatch('startH')
     this.$store.dispatch('startM')
+    setInterval(() => {
+      if(!_.isNull(this.zone)){
+        var h = this.$moment.tz(this.zone).format('h')
+        var m = this.$moment.tz(this.zone).format('m')
+      }else {
+        var h = this.$store.getters.hour
+        var m = this.$store.getters.minute
+      }
+      this.clockWorks(h,m)
+    }, 500)
   },
   computed: {
     // watches the store getter for changes and updates accordingly

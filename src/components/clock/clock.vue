@@ -15,6 +15,11 @@
     </div>
     <div class="center">
       <h1>{{ now }}</h1>
+      <select class="zone" v-model="zone">
+        <option value="">Select A Different Time Zone</option>
+        <option value="America/Los_Angeles">America/Los_Angeles</option>
+        <option value="America/Chicago">America/Chicago</option>
+      </select>
     </div>
   </div>
 </template>
