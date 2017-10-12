@@ -1,0 +1,73 @@
+.container{
+	margin: 10px auto;
+	display: flex;
+	flex-direction: row;
+	border: 2px solid black;
+	min-height: 500px;
+	max-width: 800px;
+}
+
+.blue {
+  background-color: blue;
+}
+
+.green {
+  background-color: green;
+}
+
+.center {
+  text-align: center;
+}
+
+.two {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	border-left: 2px solid black;
+}
+
+.one {
+  max-height: 50%;
+	width: 100%;
+}
+
+.onesandtwo{
+	display: flex;
+	flex-direction: row;
+	min-height: 200px;
+}
+
+.inner{
+	display: flex;
+	flex-direction: column;
+	width: 300px;
+	min-height: 100%;
+}
+
+.box {
+  border: solid;
+}
+
+#b1t, #b1b {
+  width: 100px;
+  height: 100px;
+  box-sizing: border-box;
+}
+
+#b2 {
+  width: 200px;
+  height: 200px;
+  box-sizing: border-box;
+}
+
+#b3 {
+  width: 300px;
+  height: 300px;
+  box-sizing: border-box;
+}
+
+#b5 {
+  width: 500px;
+  height: 500px;
+  box-sizing: border-box;
+}
