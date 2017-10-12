@@ -6,9 +6,9 @@ import router from './router'
 import store from './store'
 import moment from 'moment'
 import VueMomentJS from 'vue-momentjs'
+import { _ } from 'lodash'
 
-Vue.use(VueMomentJS, moment)
-// import { _ } from 'lodash'
+Vue.use(VueMomentJS, moment, _)
 
 Vue.config.productionTip = false
 
