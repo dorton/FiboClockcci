@@ -14,7 +14,13 @@
       <div class="box" id="b5" :style="{ 'background-color': b5['background-color'] }"></div>
     </div>
     <div class="center">
-      <h1>{{ now }}</h1>
+      <h1>{{ now }} in {{ tzLabel }}</h1>
+      <div class="timezone-labels">
+
+        <select v-model="tzLabel" @change="zoneUpdate">
+          <option v-for="tzLabel in tzLabels" :key="tzLabel.key">{{ tzLabel }}</option>
+        </select>
+      </div>
     </div>
   </div>
 </template>

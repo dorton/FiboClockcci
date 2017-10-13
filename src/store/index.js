@@ -1,9 +1,10 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import momentTimezone from 'moment-timezone'
 import moment from 'moment'
 import VueMomentJS from 'vue-momentjs'
 
-Vue.use(VueMomentJS, moment)
+Vue.use(VueMomentJS, moment, momentTimezone)
 
 Vue.use(Vuex)
 
@@ -19,13 +20,18 @@ export default new Vuex.Store({
     minute: state => state.minute
   },
   mutations: {
-    updateTime: state => { state.now = moment().format('LTS') },
-    updateHour: state => { state.hour = moment().format('h') },
-    updateMinute: state => { state.minute = moment().format('m') }
+    updateTime: (state, zone) => { state.now = moment.tz(zone).format('LTS') },
+    updateHour: (state, zone) => { state.hour = moment.tz(zone).format('h') },
+    updateMinute: (state, zone) => { state.minute = moment.tz(zone).format('m') }
   },
   actions: {
-    start: (context) => { setInterval(() => { context.commit('updateTime') }, 1000) },
-    startH: (context) => { setInterval(() => { context.commit('updateHour') }, 1000) },
-    startM: (context) => { setInterval(() => { context.commit('updateMinute') }, 1000) }
+    update: (context, zone) => {
+      context.commit('updateTime', zone)
+      context.commit('updateHour', zone)
+      context.commit('updateMinute', zone)
+    }
+
+    // startH: (context, zone) => { context.commit('updateHour', zone) },
+    // startM: (context, zone) => { context.commit('updateMinute', zone) }
   }
 })
