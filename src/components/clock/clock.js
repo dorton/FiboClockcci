@@ -11,37 +11,45 @@ export default {
       b2: {'isHour': false, 'isMinute': false, 'background-color': ''},
       b3: {'isHour': false, 'isMinute': false, 'background-color': ''},
       b5: {'isHour': false, 'isMinute': false, 'background-color': ''},
-      zone: null
+      tzLabel: this.$moment.tz.guess(),
+      tzLabels: '',
+      zoneUpdated: false
     }
   },
   beforeMount() {
-        var h = this.$store.getters.hour
-        var m = this.$store.getters.minute
-        this.clockWorks(h,m)
+        // begins the start action in the store
+        this.tzLabels = this.$moment.tz.names()
   },
   mounted() {
-    // begins the start action in the store
-    this.$store.dispatch('start')
-    this.$store.dispatch('startH')
-    this.$store.dispatch('startM')
     setInterval(() => {
-      if(!_.isNull(this.zone)){
-        var h = this.$moment.tz(this.zone).format('h')
-        var m = this.$moment.tz(this.zone).format('m')
+      if (this.zoneUpdated) {
+        var theZone = this.tzLabel
       }else {
-        var h = this.$store.getters.hour
-        var m = this.$store.getters.minute
+        theZone = this.$moment.tz.guess()
       }
-      this.clockWorks(h,m)
-    }, 500)
+      this.$store.dispatch('update', theZone)
+      this.clockWorks(this.$store.getters.hour, this.$store.getters.minute)
+    }, 1000)
   },
   computed: {
     // watches the store getter for changes and updates accordingly
     now() {
       return this.$store.getters.now
-    }
+    },
   },
   methods: {
+    initialState(){
+        this.b1t = {'isHour': false, 'isMinute': false, 'background-color': ''},
+        this.b1b = {'isHour': false, 'isMinute': false, 'background-color': ''},
+        this.b2 = {'isHour': false, 'isMinute': false, 'background-color': ''},
+        this.b3 = {'isHour': false, 'isMinute': false, 'background-color': ''},
+        this.b5 = {'isHour': false, 'isMinute': false, 'background-color': ''}
+    },
+    zoneUpdate() {
+      this.zoneUpdated = true
+      this.$store.dispatch('update', this.tzLabel)
+      this.initialState()
+    },
     clockWorks(h,m) {
       let fibseq = [5,3,2,1,1]
       let boxes = [this.b5, this.b3, this.b2, this.b1b, this.b1t]
