@@ -1,7 +1,10 @@
-.container{
+* {
+  box-sizing: border-box;
+}
+
+.container {
 	margin: 10px auto;
 	display: flex;
-	flex-direction: row;
 	border: 2px solid black;
 	min-height: 500px;
 	max-width: 800px;
@@ -11,6 +14,11 @@
   text-align: center;
 }
 
+.one {
+  max-height: 50%;
+  width: 100%;
+}
+
 .two {
 	display: flex;
 	flex-direction: column;
@@ -18,14 +26,9 @@
 	border-left: 2px solid black;
 }
 
-.one {
-  max-height: 50%;
-	width: 100%;
-}
 
 .onesandtwo{
 	display: flex;
-	flex-direction: row;
 	min-height: 200px;
 }
 
@@ -38,32 +41,25 @@
 
 .box {
   border: solid;
+  opacity:0.8
 }
 
 #b1t, #b1b {
   width: 100px;
   height: 100px;
-  box-sizing: border-box;
-	opacity:0.8;
 }
 
 #b2 {
   width: 200px;
   height: 200px;
-  box-sizing: border-box;
-	opacity:0.8;
 }
 
 #b3 {
   width: 300px;
   height: 300px;
-  box-sizing: border-box;
-	opacity:0.8;
 }
 
 #b5 {
   width: 500px;
   height: 500px;
-  box-sizing: border-box;
-	opacity:0.8;
 }
