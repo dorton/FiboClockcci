@@ -1,5 +1,5 @@
 <template>
-  <div id="clock">
+  <div>
     <div class="container">
       <div class="inner">
         <div class="onesandtwo">
@@ -15,8 +15,7 @@
     </div>
     <div class="center">
       <h1>{{ now }} in {{ tzLabel }}</h1>
-      <div class="timezone-labels">
-
+      <div>
         <select v-model="tzLabel" @change="zoneUpdate">
           <option v-for="tzLabel in tzLabels" :key="tzLabel.key">{{ tzLabel }}</option>
         </select>
