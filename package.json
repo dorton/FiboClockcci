@@ -15,7 +15,7 @@
     "lodash": "^4.17.4",
     "moment": "^2.19.1",
     "moment-timezone": "^0.5.13",
-    "node-sass": "^4.5.3",
+    "node-sass": "^4.13.1",
     "vue": "^2.4.2",
     "vue-momentjs": "^0.1.1",
     "vue-router": "^2.7.0",
